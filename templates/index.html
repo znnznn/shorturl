@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}Title{% endblock %}</title>
+
+</head>
+
+<body>
+<br>
+<div>
+
+    <nav>
+        <ul>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{url_for('logout_page')}}"><h4>Logout</h4></a></li>
+            <li><a href="{{url_for('main_page', name=name)}}"><h4>Main page</h4></a></li>
+            {% else %}
+            <li><a href="{{url_for('login_page')}}"><h4>Login</h4></a></li>
+            <li><a href="{{url_for('register_page')}}"><h4>Register</h4></a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% block body %}{% endblock %}
+</body>
+</html>

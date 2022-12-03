@@ -1,0 +1,69 @@
+{% extends 'index.html'  %}
+
+{% block title  %}
+{{ title }}
+{% endblock %}
+
+{% block body %}
+<style>
+        .button {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+
+</style>
+<div>
+    <form id="cut-url" action='{{ url_for("main_page", name=name) }}'>
+        <label>
+            <textarea class="form-control" name="url" rows="7" cols="120" required="required" placeholder="Enter the url you want to cut" autofocus=""></textarea>
+        </label>
+        <br>
+        <button class="button" form="cut-url" type="submit" formmethod="post" name="url">
+            Send url
+        </button>
+    </form>
+    <table>
+        <thead>
+        <tr>
+            {% if urls %}
+            {% for key in urls[0].keys() %}
+            {% if key == "url" %}
+            <th>{{ key }}</th>
+            {% elif key == "cliks" %}
+            <th>{{ key }}</th>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for value in urls %}
+        <tr>
+            {% for key, val in value.items() %}
+            {% if key == "url" %}
+            <td><a href="{{ url_for('main_page', name=value.key) }}">{{ val }}</a></td>
+            {% elif key == 'cliks' %}
+            <td>{{ val }}</td>
+            <td>
+                <form action="{{ url_for('delete_link_page') }}" method="post"><input type="hidden" name="link" value="{{ value.key }}">
+                    <button formmethod="post" type="submit" onclick="">Delete link</button>
+                </form>
+            </td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}
