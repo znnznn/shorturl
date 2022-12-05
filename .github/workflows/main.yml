@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+    build:
+
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v2
+        - name: GITHUB_WORKSPACE
+          run: echo "$GITHUB_WORKSPACE"        
+        - name: Build the Docker image
+          run: docker-compose up --build -d
+        - name: run Tests
+          run: docker-compose run --rm shorturl sh -c "python test.py"
+        - name: Stop containers
+          run: docker-compose down
