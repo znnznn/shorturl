@@ -2,7 +2,7 @@ import datetime
 
 from flask_login import UserMixin
 
-from shorturl import db, login_manager
+from app import db, login_manager
 
 
 class Url(db.Model):
