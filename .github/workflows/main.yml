@@ -19,6 +19,6 @@ jobs:
         - name: Build the Docker image
           run: docker-compose up --build -d
         - name: run Tests
-          run: docker-compose run --rm shorturl sh -c "python test.py"
+          run: docker-compose run --rm shorturl sh -c "python tests.py"
         - name: Stop containers
           run: docker-compose down
