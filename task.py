@@ -18,7 +18,7 @@ def create_racer_abbreviations_dict(file_name):
 
 # {'abbreviation of pilot': ('name of pilot, 'team')}
 abbr_dict = create_racer_abbreviations_dict(
-    '.gitignore')
+    'abbreviations.txt')
 
 
 # returns timing log from start.log or end.log in {'abbreviation': time} format
