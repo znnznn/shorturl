@@ -21,3 +21,11 @@ You need install docker
 ```commandline
 docker-compose up --build
 ```
+
+# Tech details
+
+|**Resource**|**Resource Name**|**Version**|**Comment**|
+| :-: | :-: | :-: | :-: |
+|Back-end programming language|python|3.10||
+|Back-end web framework|Flask|2.2.2||
+|Database|Sqlite|||
