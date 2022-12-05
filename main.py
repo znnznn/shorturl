@@ -49,6 +49,7 @@ def main_page(name="hello"):
     return render_template("main.html", title="Shortcuster", name=name, **context)
 
 
+@app.route('/', methods=["POST", "GET"])
 @app.route('/login', methods=["POST", "GET"])
 def login_page():
     if current_user.is_authenticated:
@@ -137,4 +138,4 @@ def error_page1(error):
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)

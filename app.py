@@ -4,7 +4,7 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
-file_path = os.path.abspath(os.getcwd()) + "/shorturl/instance/db.sqlite3"
+file_path = os.path.abspath(os.getcwd()) + "/instance/db.sqlite3"
 
 app = Flask(__name__)
 app.secret_key = 'sdlalgharidalsdD'
