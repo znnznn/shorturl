@@ -14,3 +14,10 @@ user@host$ cd shorturl/
 user@host$ pip install -r requirements.txt
 user@host$ python main.py
 ```
+
+Run project with docker.
+You need install docker
+
+```commandline
+docker-compose up --build
+```
