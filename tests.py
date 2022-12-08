@@ -18,10 +18,10 @@ class FlaskrTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.file_path = tempfile.NamedTemporaryFile(suffix=".db")
+        cls.file_path = tempfile.NamedTemporaryFile(dir=".", suffix=".db")
         cls.db = db
         cls.app = app
-        cls.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.abspath(os.getcwd()) + cls.file_path.name
+        cls.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + cls.file_path.name
         print(cls.app.config['SQLALCHEMY_DATABASE_URI'])
         cls.app.config['DEBUG'] = False
         cls.app.config['TESTING'] = True
@@ -35,7 +35,6 @@ class FlaskrTestCase(unittest.TestCase):
     def tearDownClass(cls) -> None:
         with cls.app.app_context():
             cls.db.drop_all()
-        os.remove(os.path.abspath(os.getcwd()) + cls.file_path.name)
 
     def test_empty_data_base(self):
         with self.app.app_context():
