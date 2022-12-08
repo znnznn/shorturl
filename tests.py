@@ -22,6 +22,7 @@ class FlaskrTestCase(unittest.TestCase):
         cls.db = db
         cls.app = app
         cls.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.abspath(os.getcwd()) + cls.file_path.name
+        print(cls.app.config['SQLALCHEMY_DATABASE_URI'])
         cls.app.config['DEBUG'] = False
         cls.app.config['TESTING'] = True
         cls.app.config['DEBUG'] = False
